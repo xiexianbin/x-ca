@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+set -euxo pipefail
 cd ..
 
 # Create directories
@@ -10,7 +10,6 @@ chmod 700 ca/root-ca/private
 # Create database
 cp /dev/null ca/root-ca/db/root-ca.db
 cp /dev/null ca/root-ca/db/root-ca.db.attr
-echo 01 > ca/root-ca/db/root-ca.crt.srl
 echo 01 > ca/root-ca/db/root-ca.crl.srl
 
 # Create CA request

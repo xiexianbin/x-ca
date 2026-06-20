@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+set -euxo pipefail
 cd ..
 
 # Create directories
@@ -10,7 +10,6 @@ chmod 700 ca/email-ca/private
 # Create database
 cp /dev/null ca/email-ca/db/email-ca.db
 cp /dev/null ca/email-ca/db/email-ca.db.attr
-echo 01 > ca/email-ca/db/email-ca.crt.srl
 echo 01 > ca/email-ca/db/email-ca.crl.srl
 
 # Create CA request
@@ -24,7 +23,8 @@ openssl ca \
     -config etc/root-ca.conf \
     -in ca/email-ca.csr \
     -out ca/email-ca.crt \
-    -extensions signing_ca_ext
+    -extensions signing_ca_ext \
+    -days 3650
 
 # Create initial CRL
 

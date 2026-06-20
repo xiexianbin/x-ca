@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+set -euxo pipefail
 cd ..
 
 openssl ca -gencrl \

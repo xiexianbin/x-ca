@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash",
+      "Read",
+      "Edit",
+      "Write",
+      "Glob",
+      "Grep",
+      "WebFetch",
+      "WebSearch",
+      "Task"
+    ],
+    "deny": [
+      "Bash(sudo *)",
+      "Bash(rm -rf /*)",
+      "Bash(rm -rf ~/*)",
+      "Bash(chmod 777 *)",
+      "Bash(git push *)",
+      "Read(~/.ssh/*)",
+      "Read(~/.gnupg/*)",
+      "Read(~/.aws/*)",
+      "Read(~/.config/gcloud/*)",
+      "Read(**/.env)",
+      "Read(**/secrets/*)",
+      "Read(**/*credential*)",
+      "Read(**/*password*)",
+      "Edit(~/.ssh/*)",
+      "Edit(~/.gnupg/*)",
+      "Edit(~/.aws/*)",
+      "Write(~/.ssh/*)",
+      "Write(~/.gnupg/*)",
+      "Write(~/.aws/*)"
+    ]
+  }
+}

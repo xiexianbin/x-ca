@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+set -euxo pipefail
 cd ..
 
 # Create directories
@@ -10,7 +10,6 @@ chmod 700 ca/tls-ca/private
 # Create database
 cp /dev/null ca/tls-ca/db/tls-ca.db
 cp /dev/null ca/tls-ca/db/tls-ca.db.attr
-echo 01 > ca/tls-ca/db/tls-ca.crt.srl
 echo 01 > ca/tls-ca/db/tls-ca.crl.srl
 
 # Create CA request
@@ -24,7 +23,8 @@ openssl ca \
     -config etc/root-ca.conf \
     -in ca/tls-ca.csr \
     -out ca/tls-ca.crt \
-    -extensions signing_ca_ext
+    -extensions signing_ca_ext \
+    -days 3650
 
 # Create initial CRL
 openssl ca -gencrl \
